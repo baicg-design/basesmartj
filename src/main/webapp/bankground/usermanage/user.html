@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/bootstrap-table.js"></script>
+    <script src="../js/bootstrap-table-zh-CN.js"></script>
+    <script src="../js/userManage/user.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-table.css">
+    -->
+    <script src="bankground/js/common/header.js"></script>
+    <script src="bankground/js/userManage/user.js"></script>
+
+    <title>用户管理</title>
+    <!--
+    <style>
+        .bgColor{
+            background-color:rgba(243,66,111,0.15)
+        }
+        .divBorder{
+            border: solid 1px rgba(12,24,255,0.15);
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+        .h4font{
+            margin-top: 0px;
+            font-family: 微软雅黑;
+            font-weight: 600;
+        }
+    </style>
+
+    -->
+</head>
+<body class="">
+
+<div class="panel-body" style="padding-bottom:0px;">
+
+    <div class="panel panel-default">
+        <!--查询栏目-->
+        <div class="panel-heading"  style="text-align:left">查询条件</div>
+        <!--查询Body-->
+        <div class="panel-body">
+            <form id="formSearch" class="form-horizontal">
+                <div class="form-group" style="margin-top:15px">
+                    <label class="control-label col-sm-1" for="userId">用户编号</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="userId" name="userId">
+                    </div>
+                    <label class="control-label col-sm-1" for="userName">用户名称</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="userName" name="userName">
+                    </div>
+                    <div class="col-sm-4" style="text-align:left;">
+                        <button type="button" id="btnQuery" class="btn btn-primary" onclick="userQuery();">
+                            <span class="fa fa fa-search" aria-hidden="true"></span> 查询
+                        </button>
+                        <button type="button" id="btnReset" class="btn btn-default" onclick="userReset();">
+                            <span class="fa fa-eraser" aria-hidden="true"></span> 重置
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--增删改框-->
+    <div id="toolbar" class="btn-group">
+        <!--新增按钮 模态框处理-->
+        <button id="btn_add" type="button" data-toggle="modal" class="btn btn-info" data-target="#userAddModal">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新增
+        </button>
+        <button id="btn_edit" type="button" class="btn btn-default" onclick="userEdit();">
+            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 修改
+        </button>
+        <button id="btn_delete" type="button" class="btn btn-danger" onclick="userDelete();">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除
+        </button>
+    </div>
+    <!-- 查询模态框（Modal） -->
+    <div class="modal fade" id="userAddModal" tabindex="-1" role="dialog" keyboard="true" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!--模态框头-->
+                <div class="modal-header" align="left">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">新增用户</h4>
+                </div>
+                <!--模态框体--新增数据-->
+                <div class="modal-body">
+                    <form class="m-t" role="form" id="registerform" name="registerformValidate">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="id" name="id" placeholder="用户编号" required="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="用户名称" required="">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="电子邮件" required="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder="联系方式" required="">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="用户密码" required="">
+                        </div>
+                    </form>
+                </div>
+                <!--模态框脚-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" onclick="userAdd();"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 提交</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <!--查询结果网格框-->
+    <table id="tb_departments"></table>
+</div>
+<!--JS处理逻辑实现-->
+<script type="text/javascript">
+    $(document).ready(function() {
+        var orignWidth;
+        var orignHeight;
+        $("input[type='text']").focus(function(){
+            orignWidth = $(this).outerWidth()+'px';
+            orignHeight = $(this).outerHeight()+'px';
+            $(this).animate({"width":orignWidth,"height":"35px"})
+        }).blur(function(){
+            $(this).animate({"width":orignWidth,"height":orignHeight})
+        });
+    });
+
+//    $(function (){
+//        $("[data-toggle='popover']").popover();
+//    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bcg.mapper.main.UserMapper" >
+    <resultMap id="BaseResultMap" type="com.bcg.entity.UserBasic" >
+        <id column="ID" property="id" jdbcType="CHAR" />
+        <result column="USER_NAME" property="userName" jdbcType="CHAR" />
+        <result column="PASSWORD" property="password" jdbcType="CHAR" />
+        <result column="EMAIL" property="email" jdbcType="CHAR" />
+        <result column="STATE" property="status" jdbcType="CHAR" />
+        <!--<result column="DESC" property="remark" jdbcType="CHAR" />-->
+    </resultMap>
+    <sql id="Base_Column_List" >
+      ID, USER_NAME, PASSWORD, EMAIL,STATE
+    </sql>
+    <!--
+    <select id="findAll" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from SMART_USER ORDER BY user_id
+    </select>
+    -->
+    <select id="selectUser" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from SMART_USER WHERE
+        <if test="userName!=null">
+            USER_NAME = #{userName}
+        </if>
+    </select>
+    <!--
+    <select id="checkUser" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" /> FROM SMART_USER WHERE
+        <if test="name!=null">
+            NAME = #{name}
+        </if>
+        <if test="pass!=null">
+            AND PASS = #{pass}
+        </if>
+    </select>
+    -->
+</mapper>

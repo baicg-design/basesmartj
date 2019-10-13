@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bcg.mapper.banks.BanksUserBasicMapper" >
+  <resultMap id="BaseResultMap" type="com.bcg.entity.UserBasic" >
+    <id column="USER_ID" property="userId" jdbcType="CHAR" />
+    <result column="USER_NAME" property="userName" jdbcType="CHAR" />
+    <result column="USER_PASS" property="userPass" jdbcType="CHAR" />
+    <result column="USER_EMAIL" property="userEmail" jdbcType="CHAR" />
+    <result column="USER_PHONE" property="userPhone" jdbcType="CHAR" />
+    <result column="USER_ADDR" property="userAddr" jdbcType="CHAR" />
+    <result column="USER_REMARK" property="userRemark" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USER_ID, USER_NAME, USER_PASS, USER_EMAIL, USER_PHONE, USER_ADDR, USER_REMARK
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_basic
+    where USER_ID = #{userId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user_basic
+    where USER_ID = #{userId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.bcg.entity.UserBasic" >
+    insert into user_basic (USER_ID, USER_NAME, USER_PASS, 
+      USER_EMAIL, USER_PHONE, USER_ADDR, 
+      USER_REMARK)
+    values (#{userId,jdbcType=CHAR}, #{userName,jdbcType=CHAR}, #{userPass,jdbcType=CHAR}, 
+      #{userEmail,jdbcType=CHAR}, #{userPhone,jdbcType=CHAR}, #{userAddr,jdbcType=CHAR}, 
+      #{userRemark,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bcg.entity.UserBasic" >
+    insert into user_basic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="userName != null" >
+        USER_NAME,
+      </if>
+      <if test="userPass != null" >
+        USER_PASS,
+      </if>
+      <if test="userEmail != null" >
+        USER_EMAIL,
+      </if>
+      <if test="userPhone != null" >
+        USER_PHONE,
+      </if>
+      <if test="userAddr != null" >
+        USER_ADDR,
+      </if>
+      <if test="userRemark != null" >
+        USER_REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=CHAR},
+      </if>
+      <if test="userPass != null" >
+        #{userPass,jdbcType=CHAR},
+      </if>
+      <if test="userEmail != null" >
+        #{userEmail,jdbcType=CHAR},
+      </if>
+      <if test="userPhone != null" >
+        #{userPhone,jdbcType=CHAR},
+      </if>
+      <if test="userAddr != null" >
+        #{userAddr,jdbcType=CHAR},
+      </if>
+      <if test="userRemark != null" >
+        #{userRemark,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bcg.entity.UserBasic" >
+    update user_basic
+    <set >
+      <if test="userName != null" >
+        USER_NAME = #{userName,jdbcType=CHAR},
+      </if>
+      <if test="userPass != null" >
+        USER_PASS = #{userPass,jdbcType=CHAR},
+      </if>
+      <if test="userEmail != null" >
+        USER_EMAIL = #{userEmail,jdbcType=CHAR},
+      </if>
+      <if test="userPhone != null" >
+        USER_PHONE = #{userPhone,jdbcType=CHAR},
+      </if>
+      <if test="userAddr != null" >
+        USER_ADDR = #{userAddr,jdbcType=CHAR},
+      </if>
+      <if test="userRemark != null" >
+        USER_REMARK = #{userRemark,jdbcType=CHAR},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bcg.entity.UserBasic" >
+    update user_basic
+    set USER_NAME = #{userName,jdbcType=CHAR},
+      USER_PASS = #{userPass,jdbcType=CHAR},
+      USER_EMAIL = #{userEmail,jdbcType=CHAR},
+      USER_PHONE = #{userPhone,jdbcType=CHAR},
+      USER_ADDR = #{userAddr,jdbcType=CHAR},
+      USER_REMARK = #{userRemark,jdbcType=CHAR}
+    where USER_ID = #{userId,jdbcType=CHAR}
+  </update>
+</mapper>

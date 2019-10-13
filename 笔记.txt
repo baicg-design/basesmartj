@@ -1,0 +1,7 @@
+controller接收参数的方式：
+1.
+@RequestMapping(value = "/loginUser",method = RequestMethod.POST, produces="application/json;charset=UTF-8")
+@ResponseBody
+public String loginController(@RequestBody Map<String,String> map){
+}
+2.

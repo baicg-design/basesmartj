@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>统一支付系统 | 主页</title>
+
+    <link href="bankground/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bankground/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="bankground/css/animate.css" rel="stylesheet">
+    <link href="bankground/css/style.css" rel="stylesheet">
+    <link href="bankground/js/plugins/bootstrap-validator/css/bootstrapValidator.css" rel="stylesheet" />
+    <!--引入JS依赖包-->
+    <script type="text/javascript" src="bankground/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="bankground/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bankground/js/plugins/bootstrap-validator/js/bootstrapValidator.js"></script>
+    <script charset="utf-8" type="text/javascript" language="javascript" src="bankground/js/index/index.js"></script>
+
+</head>
+
+<body onload="init()">
+
+<div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+							<img alt="image" class="img-circle" src="bankground/img/profile_small.jpg" />
+
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                                    <span class="block m-t-xs">
+                                        <strong class="font-bold">
+                                            <span><i class="fa fa-circle text-navy"></i></span>
+                                            <label id="userName" name="userName"></label>
+                                        </strong>
+                                    </span>
+                                </span>
+                            </a>
+                    </div>
+                    <div class="logo-element">
+                        IN+
+                    </div>
+                </li>
+                <li>
+                    <a href="index.html"><i class="fa fa-sitemap"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+                            <li class="active"><a onclick="userManage()">用户管理</a></li>
+                            <li><a href="usermanage/branchManage.html">机构管理</a></li>
+							<li><a href="usermanage/roleManage.html">权限管理</a></li>
+							<li><a href="usermanage/feeManage.html">费用管理</a></li>
+                        </ul>
+                </li>
+                <li>
+                    <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">参数管理</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+                            <li class="active"><a href="param_manage/paramFlag.html">交易开关设置</a></li>
+                            <li><a href="param_manage/paramRouter.html">自动路由设置</a></li>
+							<li><a href="param_manage/paramPhone.html">短信信息设置</a></li>
+							<li><a href="param_manage/paramCutting.html">网点日终检查</a></li>
+							<li><a href="param_manage/paramOrder.html">预约转账设置</a></li>
+                        </ul>
+                </li>
+                <li>
+                    <a href="index.html"><i class="fa fa-diamond"></i> <span class="nav-label">公共管理</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+                            <li class="active"><a href="public_manage/loginInOut.html">渠道登录/退出</a></li>
+                            <li><a href="public_manage/bankCode.html">行名行号查询</a></li>
+							<li><a href="public_manage/digitalCert.html">数字证书变更</a></li>
+							<li><a href="public_manage/paramCutting.html">数字证书下载</a></li>
+							<li><a href="public_manage/freeFormat.html">自由格式管理</a></li>
+							<li><a href="public_manage/systemParam.html">系统参数查询</a></li>
+							<li><a href="public_manage/authOrization.html">限额交易授权</a></li>
+							<li><a href="public_manage/authOrization.html">交易信息查询</a></li>
+							<li><a href="public_manage/acctManage.html">账户信息管理</a></li>
+							<li><a href="public_manage/cityWideManage.html">同城支付清算资金查询</a></li>
+                        </ul>
+                </li>
+                <li>
+                    <a href="index.html"><i class="fa fa-desktop"></i> <span class="nav-label">二代支付</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse">
+                            <li>
+                                <a href="#" id="damian1">排队消息管理<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="#">排队消息查询</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">排队查询申请</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">排队管理申请</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" id="damian2">清算账户管理<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="#">清算账户信息查询</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">清算账户查询申请</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">清算账户维护申请</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">清算账户余额警戒值设置</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">全面流动性管理</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">净借记限额管理</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">清算账户余额告警设置</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">净借记限额圈存资金设置</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">清算账户余额告警查询</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">清算账户管理通知查询</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">净借记限额额度告警查询</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">净借记限额管理通知查询</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">净借记限额质押/授信额度管理</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" id="damian">大额对账管理<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="#">大额预对账查询</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">人行对账结果查询</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">人行对账明细错账查询</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">人行对账汇总对账申请</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">人行对账手工对账</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">人行对账结果确认</a>
+                                    </li>
+
+
+                                    <li>
+                                        <a href="#">主机对账汇总资金清算</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">主机对账数据下载</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">主机对账手工核对</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">人行对账结果确认</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">主机对账错账查询</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">涉及调账明细查询</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                </li>
+                <li>
+                    <a href="index.html"><i class="fa fa-flask"></i> <span class="nav-label">超级网银</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+                            <li class="active"><a href="public_manage/loginInOut.html">登录/退出</a></li>
+                            <li><a href="public_manage/bankCode.html">人行对账</a></li>
+							<li><a href="public_manage/bankCode.html">主机对账</a></li>
+                        </ul>
+                </li>
+                <li>
+                    <a href="index.html"><i class="fa fa-laptop"></i> <span class="nav-label">重庆同城</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+                            <li class="active"><a href="public_manage/loginInOut.html">登录/退出</a></li>
+                            <li><a href="public_manage/bankCode.html">人行对账</a></li>
+							<li><a href="public_manage/bankCode.html">主机对账</a></li>
+                        </ul>
+                </li>
+                <li>
+                    <a href="index.html"><i class="fa fa-magic"></i> <span class="nav-label">城诚通清算</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+                            <li class="active"><a href="public_manage/loginInOut.html">登录/退出</a></li>
+                            <li><a href="public_manage/bankCode.html">人行对账</a></li>
+							<li><a href="public_manage/bankCode.html">主机对账</a></li>
+                        </ul>
+                </li>
+                <li>
+                    <a href="index.html"><i class="fa fa-star"></i> <span class="nav-label">关于我们</span></a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                    <form role="search" class="navbar-form-custom" method="post" action="#">
+                        <div class="form-group">
+                            <input type="text" placeholder="请输入搜索内容" class="form-control" name="top-search" id="top-search">
+                        </div>
+                    </form>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                        <a onclick="profile()">
+                            <i class="fa fa-user-circle"></i> 个人资料
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../login.html">
+                            <i class="fa fa-sign-out"></i> 注销
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center m-t-lg">
+						<img alt="image" class="img-circle" src="bankground/img/sj.jpg" />
+                        <h1>
+                            欢迎登录西安视佳科技有限公司后台管理系统
+                        </h1>
+                        <small>
+                            
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="pull-right">
+                10GB of <strong>250GB</strong> Free.
+            </div>
+            <div>
+                <strong>Copyright</strong> Example Company &copy; 2014-2017
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+<script src="bankground/js/jquery-3.1.1.min.js"></script>
+<script src="bankground/js/bootstrap.min.js"></script>
+<script src="bankground/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="bankground/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="bankground/js/inspinia.js"></script>
+<script src="bankground/js/plugins/pace/pace.min.js"></script>
+
+
+</body>
+
+</html>

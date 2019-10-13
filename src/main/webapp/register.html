@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西安视佳科技有限公司后台管理系统 | 注册</title>
+    <!--引入CSS依赖包-->
+    <link href="bankground/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="bankground/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="bankground/css/plugins/iCheck/custom.css" rel="stylesheet" />
+    <link href="bankground/css/animate.css" rel="stylesheet" />
+    <link href="bankground/css/style.css" rel="stylesheet" />
+    <link href="bankground/js/plugins/bootstrap-validator/css/bootstrapValidator.css" rel="stylesheet" />
+    <!--引入JS依赖包-->
+    <script type="text/javascript" src="bankground/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="bankground/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bankground/js/plugins/bootstrap-validator/js/bootstrapValidator.js"></script>
+    <!--引入iCheck-->
+    <script src="bankground/js/plugins/iCheck/icheck.min.js"></script>
+    <!--引入业务逻辑处理js-->
+    <script type="text/javascript" src="bankground/js/register.js"></script>
+</head>
+
+<body class="gray-bg">
+    <div class="middle-box text-center loginscreen   animated fadeInDown">
+        <div>
+            <h3>注册账户</h3>
+            <!--<p>创建账户以查看更多交易功能</p>-->
+            <form class="m-t" role="form" id="registerform" name="registerformValidate">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="id" name="id" placeholder="用户编号" required="">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="用户名称" required="">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="电子邮件" required="">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="联系方式" required="">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="用户密码" required="">
+                </div>
+                <div class="form-group">
+                        <div class="checkbox i-checks"><label> <input type="checkbox" id="tiaokuan"><i></i> 同意条款和政策 </label></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary block full-width m-b" id="submitBtn" onclick="register()">注册</button>
+                    <p class="text-muted text-center"><small>已经有一个帐户?</small></p>
+                    <a class="btn btn-sm btn-white btn-block" href="login.html">登录</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="loginColumns animated fadeInDown">
+        <hr/>
+        <div class="row">
+            <div class="col-md-6">
+                <small>Copyright 西安视佳科技有限公司后台管理系统 &copy; 2017-2018</small>
+            </div>
+            <div class="col-md-6 text-right">
+                www.shijia.com
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            <!--表单必输项校验-->
+            $('#registerform').bootstrapValidator({
+                message: '请输入有效的值',
+                feedbackIcons: {/*输入框不同状态，显示图片的样式*/
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {/*表单验证*/
+                    id: {/*键名username和input name值对应*/
+                        //隐藏或显示该字段的验证：true-显示
+                        enabled:true,
+                        //错误提示信息
+                        message: '用户编号验证失败',
+                        /**
+                         * 定义错误提示位置  值为CSS选择器设置方式
+                         * 例如：'#firstNameMeg' '.lastNameMeg' '[data-stripe="exp-month"]'
+                         */
+                        container:null,
+                        /**
+                         * 定义触发验证方式（也可在fields中为每个字段单独定义），默认是live配置的方式，数据改变就改变
+                         * 也可以指定一个或多个（多个空格隔开） 'focus blur keyup'
+                         */
+                        trigger: null,
+                        //校验业务逻辑
+                        validators: {
+                            notEmpty: {/*非空提示*/
+                                message: '用户编号不能为空'
+                            },
+                            stringLength: {/*长度提示*/
+                                min: 5,
+                                max: 30,
+                                message: '用户编号长度必须在5到30之间'
+                            },
+                            //添加正则表达式校验
+                            regexp:{
+                                regexp:/^[a-zA-Z0-9_]+$/,
+                                message:'用户编号只能包含大写字母、小写字母、数字和下划线'
+                            }
+                        }
+                    },
+                    name:{
+                      message:'用户名称验证失败',
+                      validators:{
+                          notEmpty: {
+                              message: '用户名称不能为空'
+                          }
+                        }
+                    },
+                    password: {
+                        message:'用户密码验证失败',
+                        validators: {
+                            notEmpty: {
+                                message: '用户密码不能为空'
+                            },
+                            stringLength: {
+                                min: 6,
+                                max:30,
+                                message: '用户密码长度必须大于6位小于30位'
+                            },
+                            regexp:{
+                                regexp:/^[a-zA-Z0-9]+$/,
+                                message:'用户密码只能包含大写字母、小写字母、数字'
+                            }
+                        }
+                    },
+                    phone:{
+                      message:'联系方式验证失败',
+                        validators:{
+                            notEmpty: {
+                                message: '联系方式不能为空'
+                            },
+                            stringLength: {
+                                min: 11,
+                                max: 11,
+                                message: '请输入11位手机号码'
+                            },
+                            regexp: {
+                                regexp: /^1[3|5|8]{1}[0-9]{9}$/,
+                                message: '请输入正确的手机号码'
+                            }
+                        }
+                    },
+                    email: {
+                        validators: {
+                            notEmpty: {
+                                message: '电子邮箱不能为空'
+                            },
+                            emailAddress: {
+                                message: '电子邮箱格式无效'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+    </script>
+
+</body>
+
+</html>

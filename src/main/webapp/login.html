@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>西安视佳科技有限公司后台管理系统 | 登录</title>
+    <!--引入CSS依赖-->
+    <link href="bankground/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bankground/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="bankground/css/animate.css" rel="stylesheet">
+    <link href="bankground/css/style.css" rel="stylesheet">
+    <link href="bankground/js/plugins/bootstrap-validator/css/bootstrapValidator.css" rel="stylesheet" />
+    <!--引入JS依赖包-->
+    <script type="text/javascript" src="bankground/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="bankground/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bankground/js/plugins/bootstrap-validator/js/bootstrapValidator.js"></script>
+    <script charset="utf-8" type="text/javascript" language="javascript" src="bankground/js/login/login.js"></script>
+</head>
+
+<body class="gray-bg">
+
+    <div class="loginColumns animated fadeInDown">
+        <div class="row">
+
+            <div class="col-md-6">
+                <h2 class="font-bold">西安视佳科技有限公司管理系统</h2>
+
+                <p>土地是以它的肥沃和收获而被估价的；才能也是土地，不过它生产的不是粮食，而是真理。如果只能滋生瞑想和幻想的话，即使再大的才能也只是砂地或盐池，那上面连小草也长不出来的。
+                </p>
+                <p>—— 别林斯基</p>
+
+            </div>
+            <div class="col-md-6">
+                <div class="ibox-content">
+                    <form class="m-t" role="form" id="loginForm" name = "loginForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="id" name="id" placeholder="用户名称" required="">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="用户密码" required="">
+                        </div>
+                    </form>
+                    <button type="submit" class="btn btn-primary block full-width m-b" onclick="login()">登录</button>
+
+                    <a href="#">
+                        <small>忘记密码?</small>
+                    </a>
+
+                    <p class="text-muted text-center">
+                        <small>还没有账号?</small>
+                    </p>
+                    <a class="btn btn-sm btn-white btn-block" href="register.html">创建一个帐户</a>
+                    <p class="m-t">
+                    </p>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-md-6">
+               <small>Copyright 西安视佳科技有限公司后台管理系统 &copy; 2017-2018</small>
+            </div>
+            <div class="col-md-6 text-right">
+               www.shijia.com
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            <!--表单必输项校验-->
+            $('#loginForm').bootstrapValidator({
+                message: '请输入有效的值',
+                feedbackIcons: {/*输入框不同状态，显示图片的样式*/
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {/*表单验证*/
+                    id: {/*键名username和input name值对应*/
+                        //隐藏或显示该字段的验证：true-显示
+                        enabled:true,
+                        //错误提示信息
+                        message: '用户编号验证失败',
+                        /**
+                         * 定义错误提示位置  值为CSS选择器设置方式
+                         * 例如：'#firstNameMeg' '.lastNameMeg' '[data-stripe="exp-month"]'
+                         */
+                        container:null,
+                        /**
+                         * 定义触发验证方式（也可在fields中为每个字段单独定义），默认是live配置的方式，数据改变就改变
+                         * 也可以指定一个或多个（多个空格隔开） 'focus blur keyup'
+                         */
+                        trigger: null,
+                        //校验业务逻辑
+                        validators: {
+                            notEmpty: {/*非空提示*/
+                                message: '用户编号不能为空'
+                            },
+                            stringLength: {/*长度提示*/
+                                min: 5,
+                                max: 30,
+                                message: '用户编号长度必须在5到30之间'
+                            },
+                            //添加正则表达式校验
+                            regexp:{
+                                regexp:/^[a-zA-Z0-9_]+$/,
+                                message:'用户编号只能包含大写字母、小写字母、数字和下划线'
+                            }
+                        }
+                    },
+                    password: {
+                        message:'用户密码验证失败',
+                        validators: {
+                            notEmpty: {
+                                message: '用户密码不能为空'
+                            },
+                            stringLength: {
+                                min: 6,
+                                max:30,
+                                message: '用户密码长度必须大于6位小于30位'
+                            },
+                            regexp:{
+                                regexp:/^[a-zA-Z0-9]+$/,
+                                message:'用户密码只能包含大写字母、小写字母、数字'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
