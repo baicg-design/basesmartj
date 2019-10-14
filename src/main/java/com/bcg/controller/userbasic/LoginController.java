@@ -57,7 +57,7 @@ public class LoginController {
 
         Map<String,String> mapResult  = loginService.login(userName,password);
 
-        log.info("+++token++-->" + mapResult.get("token"));
+        log.info("+++token++++++-->" + mapResult.get("token"));
 
         return new ResponseResult("000000","Success",mapResult);
     }
